@@ -1,0 +1,11 @@
+import express from "express";
+import * as TaskController from "../controllers/Task.controller.js";
+const router=express.Router();
+import { verifyToken } from "../middleware/auth.js";
+router.post('/teams/:teamId/tasks',verifyToken,TaskController.createTask);
+router.get('/teams/:teamId/tasks',verifyToken,TaskController.getTasks);
+router.put('/tasks/:taskId',verifyToken,TaskController.updateTask);
+router.put('/tasks/:taskId/move',verifyToken,TaskController.moveTask);
+router.post('/tasks/:taskId/comments',verifyToken,TaskController.addComment);
+router.delete('/tasks/:taskId',verifyToken,TaskController.deleteTask);
+export default router;
