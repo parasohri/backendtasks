@@ -12,7 +12,15 @@ const activityLogSchema = new mongoose.Schema(
     },
     action:{
         type:String,
-        enum:["CREATED","UPDATED","MOVED","ASSIGNED"],
+        enum: [
+  "CREATED",
+  "UPDATED",
+  "MOVED",
+  "ASSIGNED",
+  "COMMENTED",
+  "DELETED"
+]
+,
         required:true
     },
     performedBy:{
@@ -26,6 +34,8 @@ const activityLogSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+activityLogSchema.index({ team: 1, createdAt: -1 });
+
 
  const ActivityLog = mongoose.model("ActivityLog", activityLogSchema);
  export default ActivityLog;

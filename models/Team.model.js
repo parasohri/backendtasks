@@ -17,6 +17,7 @@ const teamSchema=new mongoose.Schema({
 },
 {timestamps:true}
 );
+
 teamSchema.index({name:1});
 const Team=mongoose.model('Team',teamSchema);
 export default Team;            
