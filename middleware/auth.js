@@ -30,15 +30,17 @@ export const verifyToken = (req, res, next) => {
  
   if (req.cookies?.token) {
     token = req.cookies.token;
+    console.log("cookies",req.cookies.token);
   }
 
-  console.log("op",req.headers.authorization);
+
+   
   
   if (!token && req.headers.authorization?.startsWith("Bearer ")) {
     token = req.headers.authorization.split(" ")[1];
+    
   }
-console.log("ww",token);
-
+ 
   if (!token) {
     return res.status(401).json({
       message: "Unauthorized: No token provided",
