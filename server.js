@@ -8,12 +8,15 @@ import router from './routes/User.routes.js';
 import teamRouter from './routes/Team.routes.js';
 import taskrouter from './routes/Task.routes.js';
 import ACTIVITYLOGrouter from './routes/Activitylog.routes.js';
+import { activityCleanupJob } from "./cron/activityCron.js";
+
 const app=express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 app.use(cookieParser());
 connectDB();
+activityCleanupJob();
 
 app.use('/api/users',router); 
 app.use('/api/teams',teamRouter);
