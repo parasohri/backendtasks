@@ -1,7 +1,7 @@
 import cron from "node-cron";
 import ActivityLog from "../models/Activitylog.model.js";
 
-// Runs every day at midnight
+ 
 export const activityCleanupJob = () => {
   cron.schedule("0 0 * * *", async () => {
     try {

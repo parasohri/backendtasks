@@ -21,7 +21,7 @@ export const registerUser = async (req, res) => {
 }
 export const signInUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const {email, password } = req.body;
     const key = `login:${req.ip}`;
 
     const user = await User.findOne({ email });
